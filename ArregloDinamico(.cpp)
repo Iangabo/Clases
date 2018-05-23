@@ -1,0 +1,30 @@
+#include "clases.h"
+#include <iostream>
+using namespace std;
+
+ArregloDinamico::ArregloDinamico(int Tam, int arreglo[]){
+    this->Tam=Tam;
+    this->datos= new int[Tam];
+
+    for(int i=0; i<Tam; i++){
+        datos[i]=arreglo[i];
+    }
+}
+
+void ArregloDinamico::InsertarElemento(int elemento){
+    this->Tam++;
+    int *p=new int[Tam];
+    for(int i=0; i<Tam; i++){
+        p[i]=datos[i];
+    }
+    p[Tam-1]=elemento;
+    delete[] datos;
+    for(int i=0; i<Tam; i++){
+        datos[i]=p[i];
+    }
+}
+void ArregloDinamico::mostrarElementos(){
+    for(int i=0; i<Tam; i++){
+        cout<<datos[i];
+    }
+}
