@@ -1,0 +1,16 @@
+#ifndef CLASES_H
+#define CLASES_H
+
+
+class ArregloDinamico
+{
+private:
+        int Tam;
+        int *datos;
+    public:
+        ArregloDinamico(int a,int array[]);
+        void InsertarElemento(int b);
+        void mostrarElementos();
+};
+
+#endif // CLASES_H
