@@ -1,0 +1,117 @@
+Clases
+
+ClassJUGADOR {
+	int x,y;
+	public:
+	    JUGADOR(int, int); //constructor de la clase Jugador
+	    void pintar()const;
+	    void borrar() const;
+	    void mover_cpu(int,int,int);
+	    void Y( int);
+	    int RY();
+	    int RX();
+	};
+
+
+JUGADOR::JUGADOR( int _x,int _y)
+
+
+	x=_x;
+	y=_y;
+	}
+  
+Herencia
+
+// Clase base Persona:
+class Persona {
+  public:
+   Persona(char *n, int e);
+   const char *LeerNombre(char *n) const;
+   int LeerEdad() const;
+   void CambiarNombre(const char *n);
+   void CambiarEdad(int e);
+   
+  protected:
+   char nombre[40];
+   int edad;
+};
+ 
+// Clase derivada Empleado:
+class Empleado : public Persona {
+  public:
+   Empleado(char *n, int e, float s);
+   float LeerSalario() const;
+   void CambiarSalario(const float s);
+   
+  protected:
+   float salarioAnual;
+};
+
+Polimorfismo
+
+class Persona {
+  public:
+   Persona(char *n) { strcpy(nombre, n); }
+   virtual void VerNombre() { 
+      cout << nombre << endl; 
+   }
+  protected:
+   char nombre[30];
+};
+
+Asingnacion Dinamica de Memoria
+
+#include<stdlib.h>
+main( )  {
+int *dato_simple; 
+dato_simple = (int *) malloc (3*sizeof(int));
+}
+Este trozo de código me reserva memoria para 3 datos int. 
+
+Templates
+
+template <class T>
+class Tabla {
+  public:
+   Tabla(int nElem);
+   ~Tabla();
+   T& operator[](int indice) { return pT[indice]; }
+
+  private:
+   T *pT;
+   int nElementos;
+};
+
+// Definición:
+template <class T>
+Tabla<T>::Tabla(int nElem) : nElementos(nElem) {
+   pT = new T[nElementos];
+}
+
+template <class T>
+Tabla<T>::~Tabla() {
+   delete[] pT;
+}
+
+Sobrecarga de Operadores
+
+class Pareja {
+public:
+    double a, b;
+
+    // constructor parametrizado
+    Pareja(const double a,const double b)
+    {
+        this->a = a;
+        this->b = b;
+    }
+};
+
+int main()
+{
+    Pareja A(50, 75 );
+    Pareja B(150, 175 );
+    Pareja C = A + B;
+
+    return 0;
+}
