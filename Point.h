@@ -1,27 +1,22 @@
-#include <iostream>
-#include "Point.h"
-#include "PointArray.h"
+#ifndef POINT_H
+#define POINT_H
 
-using namespace std;
-
-int main()
+class Point
 {
-    Point p(1, 3);
-    Point q(3, 3);
-    Point r(3, 1);
-    Point arr[] = {p, q , r};
-    int size = sizeof(arr)/sizeof(arr[0]);
+    public:
+        Point();
+        Point(int, int);
+        Point(Point &o);
 
-    PointArray pa2(arr, size);
+        void offset(int, int);
+        void print();
+        double getX();
+        double getY();
+        void setX(double x);
+        void setY(double y);
 
-    PointArray pa = pa2;
+    private:
+        double x, y;
+};
 
-    //cout << pa.getSize() << endl;
-    //pa.push_back(p);
-    //pa.print();
-    pa.insert(2,q);
-    //pa.print();
-    pa.remove(2);
-    pa.print();
-    return 0;
-}
+#endif // POINT_H
