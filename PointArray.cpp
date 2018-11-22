@@ -1,28 +1,47 @@
-#include <iostream>
-#include "PointArray.h"
-using namespace std;
+#ifndef POINTARRAY_H
+#define POINTARRAY_H
 
-PointArray::PointArray()
+#include "Point.h"
+template<typename TP>
+class PointArray
 {
-    this->size = 0;
-    this->points = new Point[size];
-}
+    public:
+        PointArray();
+        PointArray(const Point<TP> pts[],const int size);
 
-PointArray::PointArray(const Point pts[], const int size) {
-    this->size = size;
-    this->points = new Point[size];
-    for(int i = 0; i < size; i++)
-        points[i] = pts[i];
-}
+        PointArray(const PointArray<TP>&);
+        PointArray(PointArray &o);
+        ~PointArray();
+        void print();
+        void clear();
+        void push_back(const Point<TP> &p);
 
-PointArray::PointArray(PointArray &o){
-    this->size = o.size;
-    this->points = new Point[size];
-    for(int i = 0; i < size; i++)
-        points[i] = o.points[i];
-}
+        void insert(const int,const Point<TP> &p);
+        void remove(const int);
+        int getSize();
 
-int PointArray::getSize(){
-    return size;
-}
+        PointArray<TP> operator+(const PointArray&);
 
+       friend ostream& operator<<(ostream &o, const PointArray<TP>& _d)
+	    {
+		if ( _d.size == 0 )
+		{
+			cout<<"()";
+			return o;
+		}
+
+		for(int i = 0; i < _d.size-1; i++)
+			cout<<_d.points[i]<<", ";
+		cout<<_d.points[_d.size-1];
+
+		return o;
+	    }
+
+
+    private:
+        int size;
+
+        Point<TP> *points;
+        void resize(int);
+};
+#endif // POINTARRAY_H
