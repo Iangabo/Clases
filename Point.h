@@ -1,22 +1,23 @@
 #ifndef POINT_H
 #define POINT_H
+#include <iostream>
 
-class Point
-{
+using namespace std;
+template <typename T>
+class Point {
+    T x,y;
     public:
-        Point();
-        Point(int, int);
-        Point(Point &o);
+    Point();
+    Point(T,T);
+    Point(Point &o);
+    void offset(T,T);
+    void set_x(T);
+    void set_y(T);
+    void print();
+    T get_x();
+    T get_y();
 
-        void offset(int, int);
-        void print();
-        double getX();
-        double getY();
-        void setX(double x);
-        void setY(double y);
-
-    private:
-        double x, y;
 };
+
 
 #endif // POINT_H
