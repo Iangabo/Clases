@@ -1,42 +1,36 @@
-#include <iostream>
 #include "Point.h"
+#include <iostream>
 
-Point::Point(int xh, int yh){
-    x = xh;
-    y = yh;
+using namespace std;
+
+template<typename T>
+Point<T>::Point():x(0),y(0){}
+template<typename T>
+Point<T>::Point(T x1,T y1):x(x1),y(y1){}
+template<typename T>
+Point<T>::Point(Point1 &o):x(o.x),y(o.y){}
+template<typename T>
+void Point<T>::offset(T offset_x,T offset_y){
+    this->x=offset_x;
+    this->y=offset_y;
 }
-
-Point::Point(){
-    x = 0;
-    y = 0;
+template<typename T>
+void Point<T>::set_x(T x){
+    this->x=x;
 }
-
-Point::Point(Point &o){
-    x = o.x;
-    y = o.y;
+template<typename T>
+void Point<T>::set_y(T y){
+    this->y=y;
 }
-
-void Point::print(){
-    std::cout << "(" << x << ", " << y << ")" << std::endl;
+template<typename T>
+void Point<T>::print(){
+    std::cout<<"("<<x<<","<<y<<")"<<std::endl;
 }
-
-void Point::offset(int nx, int ny){
-    x += nx;
-    y += ny;
-}
-
-double Point::getX(){
+template<typename T>
+T Point<T>::get_x(){
     return x;
 }
-
-double Point::getY(){
+template<typename T>
+T Point<T>::get_y(){
     return y;
-}
-
-void Point::setX(double x){
-    this->x = x;
-}
-
-void Point::setY(double y){
-    this->y = y;
 }
